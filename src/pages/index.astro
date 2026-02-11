@@ -1,0 +1,399 @@
+---
+import { getCollection } from 'astro:content';
+// Component Imports
+import CallToAction from '../components/CallToAction.astro';
+// Page section components
+import ContactCTA from '../components/ContactCTA.astro';
+import Grid from '../components/Grid.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import Pill from '../components/Pill.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+import Skills from '../components/Skills.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface BrandData {
+  name: string;
+  date: string;
+  dateDay: string;
+  dateMonth: string;
+  time: string;
+  location: string;
+  info: string;
+  link?: string;
+}
+const projects = (await getCollection('work'))
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+	.slice(0, 4);
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/basics/astro-components/
+---
+
+<BaseLayout>
+	<div class="stack gap-20 lg:gap-48">
+		<div class="wrapper stack gap-8 lg:gap-20">
+			<header class="hero">
+				<Hero
+					title="Neuanfang für Riederich"
+					tagline="Bei der Bürgermeisterwahl in Riederich stehe ich, Malin Malcic, für einen Kurswechsel: mehr Dialog, mehr Service im Rathaus, mehr Verlässlichkeit im Alltag."
+					align="start"
+				>
+					<!--<div class="roles">
+						<Pill><Icon icon="building" size="1.33em" /> Verwaltungserfahren</Pill>
+						<Pill><Icon icon="shield" size="1.33em" /> Integrität</Pill>
+						<Pill><Icon icon="handshake" size="1.33em" /> Bürgernah</Pill>
+					</div> -->
+				</Hero>
+
+				<img
+					alt="Porträt von Malin Malcic, Bürgermeisterkandidatin für Riederich, freundlich und souverän"
+					width="480"
+					height="620"
+					src="/assets/portrait.jpg"
+				/>
+			</header>
+
+			<Skills />
+		</div>
+
+		<main class="wrapper stack gap-20 lg:gap-48">
+
+<section class="section with-background with-cta">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Liebe Bürgerinnen und Bürger von Riederich,</h3>
+					<p> bei der Bürgermeisterwahl in Riederich geht es um Vertrauen, Richtung und um die Frage, wie wir unsere Gemeinde in den nächsten Jahren führen wollen.
+  Ich bin Malin Malcic und kandidiere als Bürgermeisterin, weil ich Verantwortung übernehmen und gemeinsam mit Ihnen einen Neuanfang möglich machen möchte.
+</p>
+
+<p>
+  Riederich steht an einem Wendepunkt: Nach Jahren, in denen viele Entscheidungen nicht gut erklärt oder nicht gut umgesetzt wurden, braucht es mehr Transparenz,
+  eine verlässliche Verwaltung und ein Rathaus, das zuhört. Als Bürgermeisterin möchte ich Probleme klar benennen, Lösungen sauber umsetzen und Sie regelmäßig
+  informieren, was beschlossen wurde – und warum.
+</p>
+<p>
+  Im offenen Brief zur Bürgermeisterwahl in Riederich erkläre ich, wofür ich als Bürgermeisterkandidatin stehe und was sich konkret ändern soll.
+</p>
+						
+</article>	
+</header>
+
+
+				<div class="cta">
+					<CallToAction href="/offener-brief/">
+						Offenen Brief lesen
+						<Icon icon="arrow-right" size="1.2em" />
+					</CallToAction>
+				</div>
+			</section>
+
+			<section class="section without-background with-cta">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Ziele und Maßnahmen für Riederich</h3>
+					<p>In meinem Wahlprogramm zeige ich, wofür ich stehe, welche Ziele mir für Riederich wichtig sind und wie ich diese gemeinsam mit Verwaltung, Ehrenamt und Bürgerschaft umsetzen möchte. Mir geht es darum, Bewährtes zu erhalten und dort Neues zu wagen, wo Veränderung notwendig ist.</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="offset">
+						{
+							projects.map((project) => (
+								<li>
+									<PortfolioPreview project={project} />
+								</li>
+							))
+						}
+					</Grid>
+				</div>
+
+				<div class="cta">
+					<CallToAction href="/wahlprogramm/">
+						Wahlprogramm lesen
+						<Icon icon="arrow-right" size="1.2em" />
+					</CallToAction>
+				</div>
+			</section>
+
+			<section id="termine" class="section with-background bg-variant">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Termine</h3>
+					<p>
+						Hier können Sie mich in den nächsten Tagen und Wochen kennenlernen. Ich freue mich auf viele gute Gespräche!
+					</p>
+				</header>
+
+				<div class="gallery">
+				
+    <Grid variant="small">
+       {
+  [
+    { name:'Offener Treffpunkt', date:'2026-03-10', dateDay:'10.', dateMonth:'Mär', time:'12:00', location:'Marktplatz Riederich', info: 'Kommen Sie vorbei und sprechen Sie mit Malin Malcic über die Bürgermeisterwahl in Riederich: Was muss sich ändern, was soll bleiben, welche Themen sind Ihnen wichtig?'},
+    { name: 'Sprechstunde', date:'2026-02-10', dateDay:'11.', dateMonth:'Mär', time: '16:30', location: 'Bücherei am Markt', info: 'Offene Sprechstunde mit Malin Malcic in Riederich: Anliegen, Ideen und Kritik – ich nehme mir Zeit und erkläre, wie ich als Bürgermeisterin vorgehen will.', link: 'https://buzzfeed.com' },
+    { name: 'Austausch mit der Feuerwehr', date:'2026-02-10', dateDay:'22.', dateMonth:'Apr', time: '10:15', location: 'Feuerwehr Riederich', info: 'Gespräch mit der Feuerwehr Riederich: Ausstattung, Einsatzbereitschaft und Zusammenarbeit mit der Gemeindeverwaltung – wichtige Punkte für eine verlässliche Bürgermeisterarbeit.', link: 'https://thenextweb.com' },
+    
+
+  ].map((brand: BrandData) => (
+    <li
+class="mention-card cursor-pointer group p-4 border rounded-lg shadow-sm hover:shadow-lg hover:-translate-y-1"
+  onclick={`openModal(
+    ${JSON.stringify(brand.name)},
+	${JSON.stringify(brand.date)},
+    ${JSON.stringify(brand.time)},
+    ${JSON.stringify(brand.location)},
+    ${JSON.stringify(brand.info)},
+    ${JSON.stringify(brand.link ?? '')}
+  )`}
+  role="button"
+  tabindex="0"
+  aria-label={`Mehr über ${brand.name}`}
+>
+ <time class="mention-date" datetime={brand.date}>
+    <span class="mention-dateDay">{brand.dateDay}</span>
+    <span class="mention-dateMonth">{brand.dateMonth}</span>
+  </time>
+
+  <div class="mention-meta">
+    <p class="mention-name">{brand.name}</p>
+    <p class="mention-location">{brand.location}</p>
+	
+  </div>
+    </li>
+  ))
+}
+    </Grid>
+    
+    <!-- Modal -->
+    <dialog id="brandModal" class="modal">
+        <div class="modal-content">
+            <button 
+                onclick="closeModal()" 
+                class="close-btn"
+                aria-label="Schließen"
+            >
+                ✕
+            </button>
+            <div id="modalContent"></div>
+        </div>
+    </dialog>
+</div>
+
+<script>
+   
+    declare global {
+        interface Window {
+            openModal: (name: string, info: string) => void;
+            closeModal: () => void;
+        }
+    }
+    
+    function openModal(name: string, date: string, time: string, location: string, info: string, link?: string): void {
+		        const modalEl = document.getElementById('brandModal') as HTMLDialogElement | null;
+        const contentEl = document.getElementById('modalContent') as HTMLElement | null;
+
+
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const headlineColor = isDark ? '#60a5fa' : 'var(--accent-regular)';
+
+  if (contentEl) {
+    contentEl.innerHTML = `
+      <div class="text-center mb-6">
+        <h3 style="color: ${headlineColor}" class="text-2xl font-bold mb-2">${name}</h3>
+        <p class="text-lg opacity-80">${date} • ${time} • ${location}</p>
+      </div>
+<br>
+      <p class="leading-relaxed mb-8">${info}</p>
+
+      ${link ? `
+        <div class="text-center">
+          <a href="${link}" target="_blank" rel="noopener noreferrer"
+             class="inline-block bg-accent-regular hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-semibold transition-all">
+            Zur Website →
+          </a>
+        </div>
+      ` : ''}
+    `;
+  }
+
+        
+
+
+        
+        if (modalEl) {
+            (modalEl as any).showModal();  // TS‑Workaround für dialog [web:69][web:74]
+        }
+    }
+    
+    function closeModal(): void {
+        const modalEl = document.getElementById('brandModal') as HTMLDialogElement | null;
+        if (modalEl) {
+            (modalEl as any).close();  // TS‑Workaround [web:69][web:74]
+        }
+    }
+    
+    // Event Listeners (nach DOM‑Load)
+    document.addEventListener('DOMContentLoaded', () => {
+        const modalEl = document.getElementById('brandModal') as HTMLDialogElement | null;
+        if (modalEl) {
+            // Overlay + ESC schließen
+            modalEl.addEventListener('click', (e) => {
+                if (e.target === modalEl) closeModal();
+            });
+            modalEl.addEventListener('close', () => console.log('Modal closed'));
+        }
+        
+        // Global für onclick
+        (window as any).openModal = openModal;
+        (window as any).closeModal = closeModal;
+    });
+</script>
+				
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.hero {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.roles {
+		display: none;
+	}
+
+	.hero img {
+		aspect-ratio: 5 / 4;
+		object-fit: cover;
+		object-position: top;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	@media (min-width: 50em) {
+		.hero {
+			display: grid;
+			grid-template-columns: 6fr 4fr;
+			padding-inline: 2.5rem;
+			gap: 3.75rem;
+		}
+
+		.roles {
+			margin-top: 0.5rem;
+			display: flex;
+			gap: 0.5rem;
+		}
+
+		.hero img {
+			aspect-ratio: 3 / 4;
+			border-radius: 4.5rem;
+			object-fit: cover;
+		}
+	}
+
+	/* ====================================================== */
+
+	.section {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.with-background {
+		position: relative;
+	}
+
+	.with-background::before {
+		--hero-bg: var(--bg-image-subtle-2);
+
+		content: '';
+		position: absolute;
+		pointer-events: none;
+		left: 50%;
+		width: 100vw;
+		aspect-ratio: calc(2.25 / var(--bg-scale));
+		top: 0;
+		transform: translateY(-75%) translateX(-50%);
+		background:
+			url('/assets/backgrounds/noise.png') top center/220px repeat,
+			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+			var(--gray-999);
+		background-blend-mode: overlay, normal, normal, normal;
+		mix-blend-mode: var(--bg-blend-mode);
+		z-index: -1;
+	}
+
+	.with-background.bg-variant::before {
+		--hero-bg: var(--bg-image-subtle-1);
+	}
+
+	.section-header {
+		justify-self: center;
+		text-align: center;
+		max-width: 50ch;
+		font-size: var(--text-md);
+		color: var(--gray-300);
+	}
+
+	.section-header h3 {
+		font-size: var(--text-2xl);
+	}
+
+	@media (min-width: 50em) {
+		.section {
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
+			gap: 5rem;
+		}
+
+		.section.with-cta {
+			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
+		}
+
+		.section-header {
+			grid-area: header;
+			font-size: var(--text-lg);
+		}
+
+		.section-header h3 {
+			font-size: var(--text-4xl);
+		}
+
+		.with-cta .section-header {
+			justify-self: flex-start;
+			text-align: left;
+		}
+
+		.gallery {
+			grid-area: gallery;
+		}
+
+		.cta {
+			grid-area: cta;
+		}
+	}
+
+	/* ====================================================== */
+
+	.mention-card {
+		display: flex;
+		height: 7rem;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		color: var(--gray-300);
+		background: var(--gradient-subtle);
+		box-shadow: var(--shadow-sm);
+	}
+
+	@media (min-width: 50em) {
+		.mention-card {
+			border-radius: 1.5rem;
+			height: 9.5rem;
+		}
+	}
+</style>

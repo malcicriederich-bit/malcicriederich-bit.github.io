@@ -1,0 +1,54 @@
+---
+// src/components/ReadMore.astro
+export interface Props {
+  text: string;
+}
+
+const paragraphs = Astro.props.text.split("\n").filter((p) => p.trim().length > 0);
+const first = paragraphs[0];
+const rest = paragraphs.slice(1).join("\n");
+---
+
+<article class="readmore">
+  <p>{first}</p>
+  <div class="readmore__content" hidden>{rest}</div>
+  <button type="button" class="readmore__toggle">Mehr lesen</button>
+</article>
+
+<script>
+  const toggle = document.querySelector(".readmore__toggle");
+  const content = document.querySelector(".readmore__content");
+
+  toggle?.addEventListener("click", () => {
+    if (content.style.display === "none") {
+      content.style.display = "block";
+      toggle.textContent = "Weniger lesen";
+    } else {
+      content.style.display = "none";
+      toggle.textContent = "Mehr lesen";
+    }
+  });
+</script>
+
+<style>
+  .readmore {
+    max-width: 640px;
+    margin: 0 auto;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  .readmore p {
+    margin-bottom: 0.5rem;
+  }
+  .readmore__toggle {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  .readmore__toggle:hover {
+    background: #eee;
+  }
+</style>

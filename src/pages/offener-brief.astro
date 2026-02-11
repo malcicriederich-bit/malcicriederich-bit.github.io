@@ -1,0 +1,118 @@
+---
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About | Jeanine White" description="About Jeanine White Lorem Ipsum">
+	<div class="stack gap-20">
+		<main class="wrapper about">
+			<Hero
+				title="Offener Brief"
+				tagline="An alle Riedericherinnen und Riedericher."
+			>
+			
+			</Hero>
+
+<section class="section with-background without-cta">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Liebe Bürgerinnen und Bürger von Riederich,</h3>
+    <p>
+      Riederich steht vor einer wichtigen Entscheidung. In den kommenden Monaten wird mit der Bürgermeisterwahl nicht nur ein Amt neu besetzt – es geht um die Richtung, die unsere Gemeinde einschlagen soll: Wie transparent werden Entscheidungen getroffen? Wie zuverlässig werden Vorhaben umgesetzt? Und wie ernsthaft werden Ihre Anliegen gehört?
+    </p>
+    <p>
+      Viele von Ihnen haben mir in Gesprächen gespiegelt, dass in den vergangenen Jahren Vertrauen verloren gegangen ist – durch Entscheidungen, die nicht gut erklärt wurden, durch Prioritäten, die nicht nachvollziehbar waren, oder weil Dinge liegen geblieben sind, die längst hätten angepackt werden müssen. Ich glaube: Genau hier braucht es einen Neuanfang – sachlich, respektvoll und mit einem klaren Anspruch an gute Führung.
+    </p>
+    <p>
+      Ich kandidiere als Bürgermeisterin für Riederich, weil ich Verantwortung übernehmen will. Mir ist wichtig, dass Verwaltung wieder als Service verstanden wird: erreichbar, verbindlich, lösungsorientiert. Ich möchte, dass wir als Gemeinde wieder planvoll handeln, ehrlich kommunizieren und umsetzen, was wir ankündigen – mit klaren Zuständigkeiten und realistischen Zeitplänen.
+    </p>
+
+<p>
+      Ich stehe für Transparenz: Entscheidungen müssen verständlich sein – mit Begründungen, Alternativen und klaren Konsequenzen. Wer mitnimmt und erklärt, schafft Vertrauen.
+    </p>
+    <p>
+      Ich stehe für Verlässlichkeit: Projekte brauchen Prioritäten, Struktur und ein sauberes Controlling. Versprechen sind nur dann etwas wert, wenn sie im Alltag spürbar werden.
+    </p>
+    <p>
+      Ich stehe für Bürgernähe: Zuhören reicht nicht. Anliegen müssen sichtbar aufgenommen, geprüft und beantwortet werden – respektvoll und zeitnah.
+    </p>
+<p>
+      Ein Neuanfang bedeutet nicht, alles schlechtzureden. Er bedeutet, ehrlich hinzuschauen: Was läuft gut und soll bleiben? Was hat nicht funktioniert und muss korrigiert werden? Wo müssen wir schneller, klarer und pragmatischer werden?
+    </p>
+    <p>
+      Ich möchte Strukturen schaffen, die Zusammenarbeit erleichtern: mit dem Gemeinderat, mit der Verwaltung, mit Vereinen, Ehrenamtlichen und allen, die Riederich tragen. Gute Kommunalpolitik entsteht nicht im Alleingang, sondern im Miteinander – mit Respekt für unterschiedliche Sichtweisen und einem gemeinsamen Ziel.
+    </p>
+    <p>
+      Riederich kann mehr: mehr Zusammenhalt, mehr Verlässlichkeit, mehr Mut zu Lösungen. Dafür braucht es Führung, die Verantwortung übernimmt – und die Menschen nicht nur informiert, sondern einbindet.
+    </p>
+	 <p>
+      Bitte kommen Sie mit mir ins Gespräch: bei Terminen vor Ort, in der Sprechstunde oder einfach auf dem Marktplatz. Sagen Sie mir, was Sie ärgert, was Sie sich wünschen und was Ihnen für Riederich am wichtigsten ist.
+    </p>
+    <p>
+      Ich verspreche Ihnen keine Wunder. Aber ich verspreche Ihnen einen anderen Stil: zuhören, erklären, abwägen, entscheiden – und dann konsequent umsetzen. Mit Ihnen gemeinsam möchte ich Riederich den Neustart geben, den es verdient.
+    </p>
+    <p>
+      Herzliche Grüße<br />
+      Malin Malcic<br /><br /><br /><br />
+    </p>
+  </div>
+</section>
+
+
+						
+</article>	
+</header>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+@media (min-width: 50em) {
+  section {
+    display: block;   /* oder flex; Hauptsache NICHT contents */
+    font-size: var(--text-lg);
+  }
+}
+</style>
